@@ -92,7 +92,7 @@ class _RegisterBetweenCityVillageEstateState
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
-                  'ملکتون کجاست؟',
+                  'محل کسب و کار شما کجاست؟',
                   style: TextStyle(
                       fontFamily: Myfont, fontWeight: FontWeight.bold),
                 ),

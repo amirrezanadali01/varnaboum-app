@@ -32,7 +32,6 @@ class _infoState extends State<info> {
         }),
       );
     } else {
-      print('nowwwwwwwwwwwwwwwowwwwwwwwwwwwwwwwwowowowooowowowowoowowowowoow');
       await updateToken(context);
       Navigator.pushReplacement(
         context,

@@ -52,7 +52,9 @@ class _TransportationState extends State<Transportation> {
             ]),
           ),
           body: TabBarView(children: [
-            TransportationProducts(),
+            Directionality(
+                textDirection: TextDirection.rtl,
+                child: TransportationProducts()),
             CategoryRetry(
               is_products: true,
               citys: widget.citys,
@@ -138,7 +140,6 @@ class _TransportationProductsState extends State<TransportationProducts> {
 
         setState(() {});
         //append
-
       }
     }
   }
@@ -220,61 +221,104 @@ class _TransportationProductsState extends State<TransportationProducts> {
               Row(
                 children: [
                   Expanded(
-                    child: ListTile(
-                      title: Text(
-                        'موتور',
-                        style: TextStyle(fontFamily: Myfont, fontSize: 8.sp),
-                      ),
-                      leading: Radio(
-                          focusColor: secColor,
-                          activeColor: secColor,
-                          value: 1,
-                          groupValue: _valType,
-                          onChanged: (_value) {
-                            setState(() {
-                              _valType = _value as int;
-                              _nameType = 'motorcycle';
-                              getCategory = getCategorys(_nameType);
-                            });
-                          }),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'موتور',
+                            style: TextStyle(fontFamily: Myfont),
+                          ),
+                          leading: Radio(
+                              focusColor: secColor,
+                              activeColor: secColor,
+                              value: 1,
+                              groupValue: _valType,
+                              onChanged: (_value) {
+                                setState(() {
+                                  _valType = _value as int;
+                                  _nameType = 'motorcycle';
+                                  getCategory = getCategorys(_nameType);
+                                });
+                              }),
+                        ),
+                        ListTile(
+                          title: Text('دوچرخه',
+                              style: TextStyle(fontFamily: Myfont)),
+                          leading: Radio(
+                              focusColor: secColor,
+                              activeColor: secColor,
+                              value: 0,
+                              groupValue: _valType,
+                              onChanged: (_value) {
+                                setState(() {
+                                  _valType = _value as int;
+                                  _nameType = 'bycecle';
+                                  getCategory = getCategorys(_nameType);
+                                });
+                              }),
+                        ),
+                        ListTile(
+                          title: Text('ماشین',
+                              style: TextStyle(fontFamily: Myfont)),
+                          leading: Radio(
+                              focusColor: secColor,
+                              activeColor: secColor,
+                              value: 2,
+                              groupValue: _valType,
+                              onChanged: (_value) {
+                                setState(() {
+                                  _valType = _value as int;
+                                  _nameType = 'car';
+                                  getCategory = getCategorys(_nameType);
+                                });
+                              }),
+                        ),
+                      ],
                     ),
                   ),
                   Expanded(
-                    child: ListTile(
-                      title: Text('دوچرخه',
-                          style: TextStyle(fontFamily: Myfont, fontSize: 8.sp)),
-                      leading: Radio(
-                          focusColor: secColor,
-                          activeColor: secColor,
-                          value: 0,
-                          groupValue: _valType,
-                          onChanged: (_value) {
-                            setState(() {
-                              _valType = _value as int;
-                              _nameType = 'bycecle';
-                              getCategory = getCategorys(_nameType);
-                            });
-                          }),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'صفر',
+                            style: TextStyle(fontFamily: Myfont),
+                          ),
+                          leading: Radio(
+                              focusColor: secColor,
+                              activeColor: secColor,
+                              value: 0,
+                              groupValue: _valTypeUsed,
+                              onChanged: (value) {
+                                setState(() {
+                                  _valTypeUsed = value as int;
+                                  isUsed = false;
+                                  productsFilter.remove('village');
+                                });
+                              }),
+                        ),
+                        ListTile(
+                          title: Text(
+                            'کار کرده',
+                            style: TextStyle(fontFamily: Myfont),
+                          ),
+                          leading: Radio(
+                              focusColor: secColor,
+                              activeColor: secColor,
+                              value: 1,
+                              groupValue: _valTypeUsed,
+                              onChanged: (value) {
+                                setState(() {
+                                  _valTypeUsed = value as int;
+                                  isUsed = true;
+                                });
+                              }),
+                        )
+                      ],
                     ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      title: Text('ماشین',
-                          style: TextStyle(fontFamily: Myfont, fontSize: 8.sp)),
-                      leading: Radio(
-                          focusColor: secColor,
-                          activeColor: secColor,
-                          value: 2,
-                          groupValue: _valType,
-                          onChanged: (_value) {
-                            setState(() {
-                              _valType = _value as int;
-                              _nameType = 'car';
-                              getCategory = getCategorys(_nameType);
-                            });
-                          }),
-                    ),
-                  ),
+                  )
                 ],
               ),
               FutureBuilder<List>(
@@ -441,50 +485,6 @@ class _TransportationProductsState extends State<TransportationProducts> {
                   }),
               Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: ListTile(
-                          title: Text(
-                            'صفر',
-                            style: TextStyle(fontFamily: Myfont),
-                          ),
-                          leading: Radio(
-                              focusColor: secColor,
-                              activeColor: secColor,
-                              value: 0,
-                              groupValue: _valTypeUsed,
-                              onChanged: (value) {
-                                setState(() {
-                                  _valTypeUsed = value as int;
-                                  isUsed = false;
-                                  productsFilter.remove('village');
-                                });
-                              }),
-                        ),
-                      ),
-                      Expanded(
-                          child: ListTile(
-                        title: Text(
-                          'کار کرده',
-                          style: TextStyle(fontFamily: Myfont),
-                        ),
-                        leading: Radio(
-                            focusColor: secColor,
-                            activeColor: secColor,
-                            value: 1,
-                            groupValue: _valTypeUsed,
-                            onChanged: (value) {
-                              setState(() {
-                                _valTypeUsed = value as int;
-                                isUsed = true;
-                              });
-                            }),
-                      ))
-                    ],
-                  ),
                   if (isUsed == true)
                     Row(
                       children: [
@@ -521,8 +521,8 @@ class _TransportationProductsState extends State<TransportationProducts> {
                       height: 70,
                       child: Card(
                         child: InputTextPost(
-                            controllerName: priceTextController2,
-                            name: '(تومان) تا',
+                            controllerName: priceTextController1,
+                            name: 'قیمت از (تومان) ',
                             typeKeyboard: TextInputType.number),
                       ),
                     ),
@@ -532,8 +532,8 @@ class _TransportationProductsState extends State<TransportationProducts> {
                       height: 70,
                       child: Card(
                         child: InputTextPost(
-                            controllerName: priceTextController1,
-                            name: '(تومان) قیمت از',
+                            controllerName: priceTextController2,
+                            name: 'تا (تومان) ',
                             typeKeyboard: TextInputType.number),
                       ),
                     ),

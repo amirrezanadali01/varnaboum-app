@@ -58,15 +58,24 @@ class _RetryNewsState extends State<RetryNews> {
       nextUrl = jsonDecode(utf8.decode(result.bodyBytes))['next'];
 
       if (widget.news != null && newdata == false) {
+        print(
+            'herrreeherrreeherrreeherrreeherrreeherrreeherrreeherrreeherrreeherrreeherrree');
+        print('first');
+        print(widget.news!['image']);
         widget.news!['image'] =
             widget.news!['image'].replaceAll('$host/media/', '');
+        widget.news!['image'] = widget.news!['image'].replaceAll('/media/', '');
         widget.news!['video'] =
             widget.news!['video'].replaceAll('$host/media/', '');
+        widget.news!['video'] = widget.news!['video'].replaceAll('/media/', '');
         print('imagggeee ${widget.news!['image']}');
         widget.news!['image'] = "/media/${widget.news!['image']}";
         widget.news!['video'] = "/media/${widget.news!['video']}";
         newsesList
             .removeWhere((element) => element["id"] == widget.news!['id']);
+
+        print('end');
+        print(widget.news!['image']);
 
         newsesList.insert(0, widget.news);
       }
@@ -92,6 +101,7 @@ class _RetryNewsState extends State<RetryNews> {
   void initState() {
     filter = {"category": widget.Category};
     getNewses = getNews(false, filter, false);
+
     citys = getCity();
     super.initState();
   }
@@ -104,6 +114,7 @@ class _RetryNewsState extends State<RetryNews> {
         ),
         body: ListView(
           children: [
+            ///dfsjkfjkdsjkdsfajklfdsajkldfsjkldsfakjldfsjkdsajkljkdfsajkdsfkjdsklafdklsfjajkdlfsajkldfsa
             FutureBuilder<List>(
                 future: citys,
                 builder: (context, snapshot) {

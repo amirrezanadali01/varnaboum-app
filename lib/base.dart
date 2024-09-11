@@ -31,7 +31,8 @@ class _baseWidgetState extends State<baseWidget> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: Text('لطفا برنامه اپدیت بکنید',
+                title: Text(
+                    'لطفا برنامه را از کافه بازار یا سیبچه به روزرسانی کنید',
                     style: TextStyle(fontFamily: Myfont)),
               ));
     }

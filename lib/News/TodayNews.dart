@@ -7,9 +7,6 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:sizer/sizer.dart';
 import 'package:varnaboomapp/Detail.dart';
-import 'package:varnaboomapp/News/PeopleNews/AddNewsPeople.dart';
-import 'package:varnaboomapp/News/PeopleNews/PeopleNewsPage.dart';
-import 'package:varnaboomapp/News/PeopleNews/RetryNewsPeople.dart';
 import 'package:varnaboomapp/News/RetryNews.dart';
 
 class TodayNews extends StatefulWidget {
@@ -26,29 +23,29 @@ class _TodayNewsState extends State<TodayNews> {
     String access = boxToken.get('access');
     http.Response result = await http.get(Uri.parse('$host/api/TodayNews/'),
         headers: <String, String>{'Authorization': 'Bearer $access'});
-
-    print(result.statusCode);
+    print('nowwwwwwwwwwwwwwwowwwwwwwwwwwwwwwwwowowowooowowowowoowowowowoow');
+    Map test1 = jsonDecode(utf8.decode(result.bodyBytes));
+    print(test1['test1']);
+    print('nowwwwwwwwwwwwwwwowwwwwwwwwwwwwwwwwowowowooowowowowoowowowowoow');
 
     Map newses = jsonDecode(utf8.decode(result.bodyBytes));
 
     return newses;
   }
 
-  Future<List> getNewsPeople() async {
-    var boxToken = await Hive.openBox('token');
-    String access = boxToken.get('access');
-    http.Response response = await http.get(
-        Uri.parse('$host/api/TopPeopleNews/'),
-        headers: <String, String>{'Authorization': 'Bearer $access'});
+  // Future<List> getNewsPeople() async {
+  //   var boxToken = await Hive.openBox('token');
+  //   String access = boxToken.get('access');
+  //   http.Response response = await http.get(
+  //       Uri.parse('$host/api/TopPeopleNews/'),
+  //       headers: <String, String>{'Authorization': 'Bearer $access'});
 
-    print(response.statusCode);
+  //   print(response.statusCode);
 
-    List result = jsonDecode(utf8.decode(response.bodyBytes));
+  //   List result = jsonDecode(utf8.decode(response.bodyBytes));
 
-    return result;
-  }
-
-  final CarouselController _controller = CarouselController();
+  //   return result;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,123 +65,122 @@ class _TodayNewsState extends State<TodayNews> {
               length: snapshot.data!['category'].keys.length,
               child: ListView(scrollDirection: Axis.vertical, children: [
                 SizedBox(height: 15),
-
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 15, right: 15, bottom: 10, top: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('صدای مردم',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey)),
-                          GestureDetector(
-                            onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Directionality(
-                                        textDirection: TextDirection.rtl,
-                                        child: RetryNewsPeople(
-                                          news: null,
-                                        )))),
-                            child: Text(
-                              'بیشتر',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    FutureBuilder<List>(
-                        future: getNewsPeople(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return new Center(
-                              child: new CircularProgressIndicator(
-                                color: secColor,
-                              ),
-                            );
-                          } else if (snapshot.hasError) {
-                            print('Error: ${snapshot.error}');
-                            return Container();
-                          } else {
-                            return SizedBox(
-                              width: double.infinity,
-                              height: 7.h,
-                              child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: snapshot.data!.length + 1,
-                                  itemBuilder: (context, index) {
-                                    if (index == 0) {
-                                      return GestureDetector(
-                                        onTap: () => Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Directionality(
-                                                        textDirection:
-                                                            TextDirection.rtl,
-                                                        child:
-                                                            PeoPleNewsPage()))),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 5, right: 5),
-                                          child: CircleAvatar(
-                                            maxRadius: 4.h,
-                                            backgroundColor: Colors.blueGrey,
-                                            child: Icon(
-                                              Icons.add,
-                                              color: Colors.white,
-                                              size: 4.h,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    } else {
-                                      return Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 5, right: 5),
-                                        child: GestureDetector(
-                                          onTap: () => Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Directionality(
-                                                          textDirection:
-                                                              TextDirection.rtl,
-                                                          child:
-                                                              RetryNewsPeople(
-                                                            news:
-                                                                snapshot.data![
-                                                                    index - 1],
-                                                          )))),
-                                          child: CircleAvatar(
-                                            maxRadius: 4.h,
-                                            backgroundImage:
-                                                CachedNetworkImageProvider(
-                                                    snapshot.data![index - 1]
-                                                        ['image']),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                  }),
-                            );
-                          }
-                        }),
-                  ],
-                ),
+                // people news
+                // Column(
+                //   children: [
+                //     Padding(
+                //       padding: const EdgeInsets.only(
+                //           left: 15, right: 15, bottom: 10, top: 0),
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           Text('صدای مردم',
+                //               style: TextStyle(
+                //                   fontWeight: FontWeight.bold,
+                //                   color: Colors.grey)),
+                //           GestureDetector(
+                //             onTap: () => Navigator.push(
+                //                 context,
+                //                 MaterialPageRoute(
+                //                     builder: (context) => Directionality(
+                //                         textDirection: TextDirection.rtl,
+                //                         child: RetryNewsPeople(
+                //                           news: null,
+                //                         )))),
+                //             child: Text(
+                //               'بیشتر',
+                //               style: TextStyle(
+                //                   fontWeight: FontWeight.bold,
+                //                   color: Colors.grey),
+                //             ),
+                //           )
+                //         ],
+                //       ),
+                //     ),
+                //     FutureBuilder<List>(
+                //         future: getNewsPeople(),
+                //         builder: (context, snapshot) {
+                //           if (snapshot.connectionState ==
+                //               ConnectionState.waiting) {
+                //             return new Center(
+                //               child: new CircularProgressIndicator(
+                //                 color: secColor,
+                //               ),
+                //             );
+                //           } else if (snapshot.hasError) {
+                //             print('Error: ${snapshot.error}');
+                //             return Container();
+                //           } else {
+                //             return SizedBox(
+                //               width: double.infinity,
+                //               height: 7.h,
+                //               child: ListView.builder(
+                //                   scrollDirection: Axis.horizontal,
+                //                   itemCount: snapshot.data!.length + 1,
+                //                   itemBuilder: (context, index) {
+                //                     if (index == 0) {
+                //                       return GestureDetector(
+                //                         onTap: () => Navigator.push(
+                //                             context,
+                //                             MaterialPageRoute(
+                //                                 builder: (context) =>
+                //                                     Directionality(
+                //                                         textDirection:
+                //                                             TextDirection.rtl,
+                //                                         child:
+                //                                             PeoPleNewsPage()))),
+                //                         child: Padding(
+                //                           padding: const EdgeInsets.only(
+                //                               left: 5, right: 5),
+                //                           child: CircleAvatar(
+                //                             maxRadius: 4.h,
+                //                             backgroundColor: Colors.blueGrey,
+                //                             child: Icon(
+                //                               Icons.add,
+                //                               color: Colors.white,
+                //                               size: 4.h,
+                //                             ),
+                //                           ),
+                //                         ),
+                //                       );
+                //                     } else {
+                //                       return Padding(
+                //                         padding: const EdgeInsets.only(
+                //                             left: 5, right: 5),
+                //                         child: GestureDetector(
+                //                           onTap: () => Navigator.push(
+                //                               context,
+                //                               MaterialPageRoute(
+                //                                   builder: (context) =>
+                //                                       Directionality(
+                //                                           textDirection:
+                //                                               TextDirection.rtl,
+                //                                           child:
+                //                                               RetryNewsPeople(
+                //                                             news:
+                //                                                 snapshot.data![
+                //                                                     index - 1],
+                //                                           )))),
+                //                           child: CircleAvatar(
+                //                             maxRadius: 4.h,
+                //                             backgroundImage:
+                //                                 CachedNetworkImageProvider(
+                //                                     snapshot.data![index - 1]
+                //                                         ['image']),
+                //                           ),
+                //                         ),
+                //                       );
+                //                     }
+                //                   }),
+                //             );
+                //           }
+                //         }),
+                //   ],
+                // ),
                 // ]),
                 // ),
-                SizedBox(height: 15),
+
                 CarouselSlider(
-                  carouselController: _controller,
                   options: CarouselOptions(
                       autoPlay: true,
                       enlargeCenterPage: true,
@@ -254,19 +250,14 @@ class _TodayNewsState extends State<TodayNews> {
                         ),
                     ]),
                 SizedBox(height: 20),
-                ConstrainedBox(
-                    constraints: BoxConstraints(
-                      //maxHeight: 13.50.h * listItme.length,
-                      // 60
-                      //57.h
-                      maxHeight: MediaQuery.of(context).size.height > 700
-                          ? 50.h
-                          : 65.h,
-                    ),
-                    child: TabBarView(children: [
-                      for (var i in snapshot.data!['category'].keys)
-                        CategoryView(news: snapshot.data!['category'][i])
-                    ]))
+
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.53,
+                  child: TabBarView(children: [
+                    for (var i in snapshot.data!['category'].keys)
+                      CategoryView(news: snapshot.data!['category'][i])
+                  ]),
+                )
               ]),
             );
           }
@@ -289,7 +280,7 @@ class CategoryView extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: MediaQuery.of(context).size.height > 700
-                ? 0.10.h
+                ? 1
                 : 0.13.h), //10 , //14
         itemBuilder: (context, indexdt) {
           return GestureDetector(

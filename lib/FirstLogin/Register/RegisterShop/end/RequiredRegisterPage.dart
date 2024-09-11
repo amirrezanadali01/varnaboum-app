@@ -192,7 +192,7 @@ class _endregisterState extends State<endregister> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text("چه خدمات و محصولاتی ارائه می دهی",
+                        title: Text("چه خدمات و محصولاتی ارائه می دهید",
                             style: TextStyle(fontFamily: Myfont)),
                         content: Text(''),
                         actions: [
@@ -312,7 +312,6 @@ class _endregisterState extends State<endregister> {
                 //     filename: '${i.name}'.toEnglishDigit(),
                 //     contentType: MediaType("image", "png"));
                 // asstImages.add({'image': multipartFile});
-
               }
 
               // String fileName = imageProfile?.path.split('/').last as String;
@@ -513,7 +512,7 @@ class _endregisterState extends State<endregister> {
                                   fontSize: 17,
                                   fontFamily: Myfont,
                                 ),
-                                labelText: 'چه خدمات و محصولاتی ارائه میدهی',
+                                labelText: 'چه خدمات و محصولاتی ارائه می دهید',
                                 enabledBorder: InputBorder.none,
                               ),
                             )

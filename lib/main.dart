@@ -8,7 +8,6 @@ import 'package:varnaboomapp/infopage.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() async {
-  HttpOverrides.global = new MyHttpOverrides();
   runApp(MyApp());
 }
 
@@ -36,14 +35,5 @@ class MyApp extends StatelessWidget {
           home:
               Directionality(textDirection: TextDirection.rtl, child: info()));
     });
-  }
-}
-
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
   }
 }

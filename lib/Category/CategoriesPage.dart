@@ -462,7 +462,7 @@ class _HomePageState extends State<HomePage> {
                         },
                         child: CachedNetworkImage(
                           imageUrl: i.image,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                         ))
                 ],
               ),

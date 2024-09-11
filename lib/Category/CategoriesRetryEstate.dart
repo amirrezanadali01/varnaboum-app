@@ -226,7 +226,7 @@ class _CategoriesRetryEstateState extends State<CategoriesRetryEstate> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Expanded(
-                                flex: 2,
+                                flex: 1,
                                 child: ListTile(
                                   title: Text(
                                     'شهر',

@@ -190,7 +190,6 @@ class _EstateProductsState extends State<EstateProducts> {
 
         setState(() {});
         //append
-
       }
     }
   }
@@ -343,7 +342,6 @@ class _EstateProductsState extends State<EstateProducts> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Expanded(
-                                flex: 2,
                                 child: ListTile(
                                   title: Text(
                                     'شهر',
@@ -363,27 +361,27 @@ class _EstateProductsState extends State<EstateProducts> {
                                       }),
                                 ),
                               ),
+                              SizedBox(width: 80),
                               Expanded(
-                                  flex: 1,
                                   child: ListTile(
-                                    title: Text(
-                                      'روستا',
-                                      style: TextStyle(fontFamily: Myfont),
-                                    ),
-                                    leading: Radio(
-                                        focusColor: secColor,
-                                        activeColor: secColor,
-                                        value: 1,
-                                        groupValue: _valTypeCity,
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _valTypeCity = value as int;
-                                            isVillage = true;
-                                            productsFilter['village'] =
-                                                snapshot.data![0]['id'];
-                                          });
-                                        }),
-                                  ))
+                                title: Text(
+                                  'روستا',
+                                  style: TextStyle(fontFamily: Myfont),
+                                ),
+                                leading: Radio(
+                                    focusColor: secColor,
+                                    activeColor: secColor,
+                                    value: 1,
+                                    groupValue: _valTypeCity,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _valTypeCity = value as int;
+                                        isVillage = true;
+                                        productsFilter['village'] =
+                                            snapshot.data![0]['id'];
+                                      });
+                                    }),
+                              ))
                             ],
                           ),
                           if (isVillage == true)

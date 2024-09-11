@@ -1603,7 +1603,7 @@ class EditInfoShop extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'چه خدمات و محصولاتی ارائه میدهی',
+                      'چه خدمات و محصولاتی ارائه می دهید',
                       style: TextStyle(
                           fontFamily: Myfont, fontWeight: FontWeight.bold),
                     ),

@@ -98,15 +98,19 @@ class _serachState extends State<serach> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            is_loading = true;
+                          });
+                          search(controller.text);
+                        },
+                        icon: Icon(Icons.search))),
                 textAlign: TextAlign.right,
                 autofocus: true,
                 controller: controller,
-                onChanged: (value) {
-                  setState(() {
-                    is_loading = true;
-                  });
-                  search(value);
-                },
+                onChanged: (value) {},
               ),
             ),
             is_loading == false

@@ -219,7 +219,7 @@ class _AddTicketState extends State<AddTicket> {
                       child: Padding(
                         padding: const EdgeInsets.all(14),
                         child: Text(
-                            'این پیام تمام اعضای اداره میتوانند ببیند . \nپس از اتمام تیکت این پیام تمام کاربران میبینند.'),
+                            'این پیام تمام اعضای اداره میتوانند ببیند. \nپس از اتمام تیکت این پیام تمام کاربران میبینند.'),
                       ),
                     ),
                   ),
@@ -231,7 +231,7 @@ class _AddTicketState extends State<AddTicket> {
                       child: Padding(
                         padding: const EdgeInsets.all(14),
                         child: Text(
-                            'این پیام به صورت خصوصی است و تنها مسئول منتخب میتواند پیام شمارو ببیند'),
+                            'این پیام را فقط مسئول مربوطه می تواند رویت کند'),
                       ),
                     ),
                   ),
@@ -397,29 +397,29 @@ class _AddTicketState extends State<AddTicket> {
                           ],
                         ),
                       ),
-                      Expanded(
-                          child: Column(
-                        children: [
-                          IconButton(
-                            onPressed: getVideo,
-                            icon: Icon(
-                              Icons.movie,
-                              size: 4.h,
-                              color: video == null
-                                  ? Colors.orangeAccent
-                                  : Colors.greenAccent,
-                            ),
-                          ),
-                          Text(
-                            'فیلم',
-                            style: TextStyle(
-                              color: video == null
-                                  ? Colors.orangeAccent
-                                  : Colors.greenAccent,
-                            ),
-                          )
-                        ],
-                      )),
+                      // Expanded(
+                      //     child: Column(
+                      //   children: [
+                      //     IconButton(
+                      //       onPressed: getVideo,
+                      //       icon: Icon(
+                      //         Icons.movie,
+                      //         size: 4.h,
+                      //         color: video == null
+                      //             ? Colors.orangeAccent
+                      //             : Colors.greenAccent,
+                      //       ),
+                      //     ),
+                      //     Text(
+                      //       'فیلم',
+                      //       style: TextStyle(
+                      //         color: video == null
+                      //             ? Colors.orangeAccent
+                      //             : Colors.greenAccent,
+                      //       ),
+                      //     )
+                      //   ],
+                      // )),
                     ],
                   ),
                 ),
